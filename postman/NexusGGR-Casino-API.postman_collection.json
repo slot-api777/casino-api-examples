@@ -1,0 +1,219 @@
+{
+  "info": {
+    "name": "NexusGGR Casino API",
+    "description": "The main methods of the NexusGGR casino API. Set api_endpoint, agent_code and agent_token from the API Settings page of the back office. Docs: https://my.nexusggr.com/app/docs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "money_info",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"money_info\",\n    \"agent_code\": \"{{agent_code}}\",\n    \"agent_token\": \"{{agent_token}}\",\n    \"user_code\": \"player_1001\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_endpoint}}",
+          "host": [
+            "{{api_endpoint}}"
+          ]
+        },
+        "description": "Agent balance, and a player's balance when user_code is sent."
+      }
+    },
+    {
+      "name": "provider_list",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"provider_list\",\n    \"agent_code\": \"{{agent_code}}\",\n    \"agent_token\": \"{{agent_token}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_endpoint}}",
+          "host": [
+            "{{api_endpoint}}"
+          ]
+        },
+        "description": "Every provider with its code, type and status. At most once per second."
+      }
+    },
+    {
+      "name": "game_list",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"game_list\",\n    \"agent_code\": \"{{agent_code}}\",\n    \"agent_token\": \"{{agent_token}}\",\n    \"provider_code\": \"PRAGMATIC\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_endpoint}}",
+          "host": [
+            "{{api_endpoint}}"
+          ]
+        },
+        "description": "The games of one provider with codes, names and images. At most once per second."
+      }
+    },
+    {
+      "name": "game_launch",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"game_launch\",\n    \"agent_code\": \"{{agent_code}}\",\n    \"agent_token\": \"{{agent_token}}\",\n    \"user_code\": \"player_1001\",\n    \"provider_code\": \"PRAGMATIC\",\n    \"game_code\": \"vs20olympgate\",\n    \"lang\": \"en\",\n    \"lobby_url\": \"https://your-site.com/lobby\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_endpoint}}",
+          "host": [
+            "{{api_endpoint}}"
+          ]
+        },
+        "description": "Returns launch_url for the player."
+      }
+    },
+    {
+      "name": "user_deposit (transfer wallet)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"user_deposit\",\n    \"agent_code\": \"{{agent_code}}\",\n    \"agent_token\": \"{{agent_token}}\",\n    \"user_code\": \"player_1001\",\n    \"amount\": 10000,\n    \"agent_sign\": \"deposit_0001\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_endpoint}}",
+          "host": [
+            "{{api_endpoint}}"
+          ]
+        },
+        "description": "Moves funds from the agent balance to the player. agent_sign (letters, digits and underscores) makes the transfer safe to resend."
+      }
+    },
+    {
+      "name": "user_withdraw (transfer wallet)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"user_withdraw\",\n    \"agent_code\": \"{{agent_code}}\",\n    \"agent_token\": \"{{agent_token}}\",\n    \"user_code\": \"player_1001\",\n    \"amount\": 10000,\n    \"agent_sign\": \"withdraw_0001\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_endpoint}}",
+          "host": [
+            "{{api_endpoint}}"
+          ]
+        },
+        "description": "Moves funds from the player back to the agent balance."
+      }
+    },
+    {
+      "name": "transfer_status (transfer wallet)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"transfer_status\",\n    \"agent_code\": \"{{agent_code}}\",\n    \"agent_token\": \"{{agent_token}}\",\n    \"user_code\": \"player_1001\",\n    \"agent_sign\": \"deposit_0001\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_endpoint}}",
+          "host": [
+            "{{api_endpoint}}"
+          ]
+        },
+        "description": "Checks a deposit or withdrawal by its agent_sign."
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "api_endpoint",
+      "value": "https://your-api-endpoint"
+    },
+    {
+      "key": "agent_code",
+      "value": "your_agent_code"
+    },
+    {
+      "key": "agent_token",
+      "value": "your_agent_token"
+    }
+  ]
+}

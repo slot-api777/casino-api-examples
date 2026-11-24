@@ -1,0 +1,12 @@
+{
+  "name": "nexusggr-casino-api-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NexusGGR casino API examples: API calls and a seamless wallet callback server",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "providers": "node api-example.mjs providers",
+    "wallet": "node seamless-wallet-server.mjs"
+  }
+}
