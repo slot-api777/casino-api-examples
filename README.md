@@ -63,7 +63,3 @@ The examples keep balances in memory (Node.js) or in a file (PHP) so they run wi
 ## Keep your credentials secret
 
 Never commit your agent token or secret. Read them from the environment, as these examples do.
-
-## Support
-
-support@nexusggr.com
